@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/unfoldingWord-dev/obs_tools.svg)](https://travis-ci.org/unfoldingWord-dev/obs_tools) [![Coverage Status](https://coveralls.io/repos/github/unfoldingWord-dev/obs_tools/badge.svg)](https://coveralls.io/github/unfoldingWord-dev/obs_tools)
+
 # unfoldingWord OBS Tools
 
 A collection of Python scripts that have proven useful and have been reused.

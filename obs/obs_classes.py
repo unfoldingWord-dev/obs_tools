@@ -5,7 +5,7 @@ from collections import OrderedDict
 from datetime import datetime
 import os
 from json import JSONEncoder
-import chapters_and_frames
+from obs import chapters_and_frames
 from general_tools.file_utils import load_json_object
 from general_tools.languages import Language
 
