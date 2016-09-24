@@ -1,21 +1,21 @@
 master:
 
 .. image:: https://travis-ci.org/unfoldingWord-dev/obs_tools.svg?branch=master
-:alt: Build Status
+    :alt: Build Status
     :target: https://travis-ci.org/unfoldingWord-dev/obs_tools
 
 .. image:: https://coveralls.io/repos/github/unfoldingWord-dev/obs_tools/badge.svg?branch=master
-:alt: Build Status
+    :alt: Build Status
     :target: https://coveralls.io/github/unfoldingWord-dev/obs_tools
 
 develop:
 
 .. image:: https://travis-ci.org/unfoldingWord-dev/obs_tools.svg?branch=develop
-:alt: Build Status
+    :alt: Build Status
     :target: https://travis-ci.org/unfoldingWord-dev/obs_tools
 
 .. image:: https://coveralls.io/repos/github/unfoldingWord-dev/obs_tools/badge.svg?branch=develop
-:alt: Build Status
+    :alt: Build Status
     :target: https://coveralls.io/github/unfoldingWord-dev/obs_tools
 
 unfoldingWord OBS Tools
