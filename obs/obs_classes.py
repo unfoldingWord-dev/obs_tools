@@ -57,7 +57,7 @@ class OBSChapter(object):
 
     title_re = re.compile(r'^\s*#(.*?)#*\n', re.UNICODE)
     ref_re = re.compile(r'\n(_*.*?_*)\n*$', re.UNICODE)
-    frame_re = re.compile(r'!\[Image\].*?obs-en-(\d\d)-(\d\d)\.jpg.*?\)\n([^!]*)', re.UNICODE)
+    frame_re = re.compile(r'!\[(?:OBS Image|Image)\].*?obs-en-(\d\d)-(\d\d)\.jpg.*?\)\n([^!]*)', re.UNICODE)
     img_url = 'https://cdn.door43.org/obs/jpg/360px/obs-en-{0}.jpg'
 
     def __init__(self, json_obj=None):
