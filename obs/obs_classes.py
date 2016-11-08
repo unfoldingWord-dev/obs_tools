@@ -39,16 +39,17 @@ class OBSStatus(object):
     def from_manifest(manifest):
         status = OBSStatus()
 
-        manifest_status = manifest['status']
+        resource = manifest['resource']
+        resource_status = resource['status']
 
-        status.checking_entity = ', '.join(manifest_status['checking_entity'])
-        status.checking_level = manifest_status['checking_level']
-        status.comments = manifest_status['comments']
-        status.contributors = ', '.join(manifest_status['contributors'])
-        status.publish_date = manifest_status['pub_date']
-        status.source_text = manifest_status['source_translations'][0]['language_slug']
-        status.source_text_version = manifest_status['source_translations'][0]['version']
-        status.version = manifest_status['version']
+        status.checking_entity = ', '.join(resource_status['checking_entity'])
+        status.checking_level = resource_status['checking_level']
+        status.comments = resource_status['comments']
+        status.contributors = ', '.join(resource_status['contributors'])
+        status.publish_date = resource_status['pub_date']
+        status.source_text = resource_status['source_translations'][0]['language_slug']
+        status.source_text_version = resource_status['source_translations'][0]['version']
+        status.version = resource_status['version']
 
         return status
 
@@ -324,33 +325,46 @@ class OBSManifest(object):
             else:
                 raise IOError('The file {0} was not found.'.format(file_name))
         else:
-            self.syntax_version = '1.0'
-            self.type = 'book'
+            self.package_version = 1
+            self.modified_at = datetime.today().strftime('%Y%m%d000000')
             self.content_mime_type = 'text/markdown'
-            self.slug = 'obs'
-            self.name = 'Open Bible Stories'
             self.versification_slug = 'ufw'
-            self.finished_chunks = []
+
             self.language = {'slug': 'en', 'name': 'English', 'dir': 'ltr'}
-            self.status = {'translate_mode': 'all', 'checking_entity': [], 'checking_level': '1', 'version': '4',
-                           'comments': '', 'contributors': [], 'pub_date': datetime.today().strftime('%Y-%m-%d'),
-                           'license': 'CC BY-SA', 'checks_performed': [],
-                           'source_translations': []}
+
+            self.resource = {
+                'slug': 'obs',
+                'name': 'Open Bible Stories',
+                'type': 'book',
+
+                'status': {
+                    'translate_mode': 'all',
+                    'checking_entity': [],
+                    'checking_level': '1',
+                    'version': '4',
+                    'comments': '',
+                    'contributors': [],
+                    'pub_date': datetime.today().strftime('%Y-%m-%d'),
+                    'license': 'CC BY-SA',
+                    'checks_performed': [],
+                    'source_translations': []
+                }
+            }
+
+            self.chunk_status = []
 
     def __contains__(self, item):
         return item in self.__dict__
 
     def to_serializable(self):
         return_val = OrderedDict([
-            ('syntax_version', self.syntax_version),
-            ('type', self.type),
+            ('package_version', self.package_version),
+            ('modified_at', self.modified_at),
             ('content_mime_type', self.content_mime_type),
-            ('language', self.language),
-            ('slug', self.slug),
-            ('name', self.name),
             ('versification_slug', self.versification_slug),
-            ('status', self.status),
-            ('finished_chunks', self.finished_chunks)
+            ('language', self.language),
+            ('resource', self.resource),
+            ('chunk_status', self.chunk_status)
         ])
 
         return return_val
