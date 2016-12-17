@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="obs_tools",
-    version="0.0.1",
+    version="0.0.4",
     author="unfoldingWord",
     author_email="unfoldingword.org",
     description="Unit test setup file.",
