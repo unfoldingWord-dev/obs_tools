@@ -39,17 +39,16 @@ class OBSStatus(object):
     def from_manifest(manifest):
         status = OBSStatus()
 
-        resource = manifest['resource']
-        resource_status = resource['status']
+        dublin_core = manifest['dublin_core']
 
-        status.checking_entity = ', '.join(resource_status['checking_entity'])
-        status.checking_level = resource_status['checking_level']
-        status.comments = resource_status['comments']
-        status.contributors = ', '.join(resource_status['contributors'])
-        status.publish_date = resource_status['pub_date']
-        status.source_text = resource_status['source_translations'][0]['language_slug']
-        status.source_text_version = resource_status['source_translations'][0]['version']
-        status.version = resource_status['version']
+        status.checking_entity = ', '.join(manifest['checking']['checking_entity'])
+        status.checking_level = manifest['checking']['checking_level']
+        status.comments = dublin_core['description']
+        status.contributors = ', '.join(dublin_core['contributor'])
+        status.publish_date = dublin_core['modified']
+        status.source_text = dublin_core['source'][0]['language']
+        status.source_text_version = dublin_core['source'][0]['version']
+        status.version = dublin_core['version']
 
         return status
 
